@@ -1,0 +1,66 @@
+{
+  "name": "CardUser",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Nome completo do usu\u00e1rio"
+    },
+    "cpf": {
+      "type": "string",
+      "description": "CPF do usu\u00e1rio"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Telefone do usu\u00e1rio"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email do usu\u00e1rio"
+    },
+    "neighborhood": {
+      "type": "string",
+      "description": "Bairro"
+    },
+    "city": {
+      "type": "string",
+      "description": "Cidade"
+    },
+    "state": {
+      "type": "string",
+      "description": "Estado"
+    },
+    "registration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data do cadastro"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data de vencimento do cart\u00e3o"
+    },
+    "card_number": {
+      "type": "string",
+      "description": "N\u00famero do cart\u00e3o gerado automaticamente"
+    },
+    "inscription_number": {
+      "type": "number",
+      "description": "N\u00famero sequencial de inscri\u00e7\u00e3o"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Ativo",
+        "Inativo"
+      ],
+      "default": "Ativo",
+      "description": "Status do cart\u00e3o para renova\u00e7\u00e3o"
+    }
+  },
+  "required": [
+    "full_name",
+    "cpf",
+    "phone"
+  ]
+}

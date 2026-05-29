@@ -1,0 +1,44 @@
+{
+  "name": "Company",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nome da empresa"
+    },
+    "category": {
+      "type": "string",
+      "description": "Categoria/ramo da empresa"
+    },
+    "discount_percentage": {
+      "type": "number",
+      "description": "Percentual de desconto concedido"
+    },
+    "address": {
+      "type": "string",
+      "description": "Endere\u00e7o da empresa"
+    },
+    "neighborhood": {
+      "type": "string",
+      "description": "Bairro"
+    },
+    "city": {
+      "type": "string",
+      "description": "Cidade"
+    },
+    "state": {
+      "type": "string",
+      "description": "Estado"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Telefone principal"
+    },
+    "phone2": {
+      "type": "string",
+      "description": "Telefone secund\u00e1rio ou celular"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descri\u00e7\u00e3o dos servi\u00e7os/produtos"
+    },

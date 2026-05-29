@@ -1,0 +1,68 @@
+{
+  "name": "Payment",
+  "type": "object",
+  "properties": {
+    "usuario_id": {
+      "type": "string",
+      "description": "ID do usu\u00e1rio que realizou o pagamento"
+    },
+    "card_user_id": {
+      "type": "string",
+      "description": "ID do CardUser associado"
+    },
+    "valor": {
+      "type": "number",
+      "description": "Valor da cobran\u00e7a"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pendente",
+        "pago",
+        "vencido",
+        "cancelado"
+      ],
+      "default": "pendente",
+      "description": "Status do pagamento"
+    },
+    "asaas_payment_id": {
+      "type": "string",
+      "description": "ID do pagamento no Asaas"
+    },
+    "billing_type": {
+      "type": "string",
+      "enum": [
+        "PIX",
+        "BOLETO",
+        "CARTAO"
+      ],
+      "default": "PIX",
+      "description": "Tipo de cobran\u00e7a"
+    },
+    "data_pagamento": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data de confirma\u00e7\u00e3o do pagamento"
+    },
+    "descricao": {
+      "type": "string",
+      "description": "Descri\u00e7\u00e3o da cobran\u00e7a"
+    },
+    "pix_qrcode": {
+      "type": "string",
+      "description": "QR Code PIX para pagamento"
+    },
+    "pix_copiaecola": {
+      "type": "string",
+      "description": "C\u00f3digo Pix Copia e Cola"
+    },
+    "invoice_url": {
+      "type": "string",
+      "description": "URL da fatura/boleto"
+    }
+  },
+  "required": [
+    "valor",
+    "billing_type"
+  ]
+}
