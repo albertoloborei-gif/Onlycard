@@ -1,16 +1,15 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { CreditCard, Shield, Search, Building2, MessageCircle } from "lucide-react";
+import { base44 } from "@/api/base44Client";
 
 export default function Layout({ children, currentPageName }) {
   const isAdmin = currentPageName?.startsWith("Admin");
   const [business, setBusiness] = useState(null);
 
   useEffect(() => {
-    db.entities.BusinessInfo.list().then((data) => {
+    base44.entities.BusinessInfo.list().then((data) => {
       if (data?.length > 0) setBusiness(data[0]);
     });
   }, []);
@@ -43,3 +42,52 @@ export default function Layout({ children, currentPageName }) {
               <span>Comprar</span>
             </Link>
             {business?.phone && (
+              <a
+                href={`https://wa.me/55${business.phone.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-[#FF6B00] text-white hover:bg-orange-600 transition-all shadow-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Fale Conosco</span>
+              </a>
+            )}
+            <Link
+              to={createPageUrl("UserPortal")}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-[#FF6B00] text-white hover:bg-orange-600 transition-all shadow-sm"
+            >
+              <Search className="w-4 h-4" />
+              <span>Consultar Cartão</span>
+            </Link>
+            <Link
+              to={createPageUrl("CompanyList")}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-[#FF6B00] text-white hover:bg-orange-600 transition-all shadow-sm"
+            >
+              <Building2 className="w-4 h-4" />
+              <span>Empresas</span>
+            </Link>
+            <Link
+              to={createPageUrl("AdminLogin")}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-[#FF6B00] text-white hover:bg-orange-600 transition-all shadow-sm"
+            >
+              <Shield className="w-4 h-4" />
+              <span>Admin</span>
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        {children}
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-orange-100 mt-12 py-6">
+        <p className="text-center text-xs text-gray-400">
+          © 2026 Cartão Desconto — Todos os direitos reservados
+        </p>
+      </footer>
+    </div>
+  );
+}
