@@ -42,3 +42,23 @@ export default function CPFInput(props) {
     const cpf = e.target.value;
     if (cpf && !validateCPF(cpf)) {
       setError("CPF inválido");
+    } else {
+      setError("");
+    }
+    if (onBlur) onBlur(e);
+  };
+
+  return (
+    <div>
+      <Input
+        {...restProps}
+        value={value}
+        onChange={(e) => onChange(formatCPF(e.target.value))}
+        onBlur={handleBlur}
+        placeholder="000.000.000-00"
+        className={error ? "border-red-500" : className}
+      />
+      {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
+    </div>
+  );
+}
