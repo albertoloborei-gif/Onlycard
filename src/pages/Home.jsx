@@ -38,11 +38,20 @@ const benefits = [
 export default function Home() {
   const [business, setBusiness] = useState(null);
 
-  useEffect(() => {
-    db.entities.BusinessInfo.list().then((data) => {
-      if (data?.length > 0) setBusiness(data[0]);
-    });
-  }, []);
+ useEffect(() => {
+  const load = async () => {
+    try {
+      const data = await db.entities.BusinessInfo.filter();
+      if (data?.length > 0) {
+        setBusiness(data[0]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  load();
+}, []);
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center">
