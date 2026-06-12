@@ -14,11 +14,9 @@ export const AuthProvider = ({ children }) => {
   const [authError, setAuthError] = useState(null);
   const [appPublicSettings, setAppPublicSettings] = useState(null); // Contains only { id, public_settings }
 
-  useEffect(() => {
-    checkAppState();
-  }, []);
-
+useEffect(() => {}, []);
   const checkAppState = async () => {
+
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
