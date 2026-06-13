@@ -30,7 +30,7 @@ export default function UserPortal() {
 
   const { data: businessList } = useQuery({
     queryKey: ["businessinfo"],
-    queryFn: () => db.entities.BusinessInfo.list(),
+    queryFn: () => db.entities.BusinessInfo.filter(),
     initialData: [],
   });
   const business = businessList.length > 0 ? businessList[0] : null;
