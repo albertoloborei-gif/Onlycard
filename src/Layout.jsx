@@ -9,7 +9,7 @@ export default function Layout({ children, currentPageName }) {
   const [business, setBusiness] = useState(null);
 
   useEffect(() => {
-    base44.entities.BusinessInfo.list().then((data) => {
+    base44.entities.BusinessInfo.filter().then((data) => {
       if (data?.length > 0) setBusiness(data[0]);
     });
   }, []);
