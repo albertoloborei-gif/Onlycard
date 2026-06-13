@@ -15,7 +15,7 @@ function BusinessContent() {
 
   const { data: businessList } = useQuery({
     queryKey: ["businessinfo"],
-    queryFn: () => base44.entities.BusinessInfo.list(),
+    queryFn: () => base44.entities.BusinessInfo.filter(),
     initialData: [],
   });
 
