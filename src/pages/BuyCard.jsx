@@ -23,7 +23,7 @@ export default function BuyCard() {
   const [showSaibaMais, setShowSaibaMais] = useState(false);
 
   useEffect(() => {
-    db.entities.BusinessInfo.list().then((data) => {
+    db.entities.BusinessInfo.filter().then((data) => {
       if (data?.length > 0) {
         if (data[0].card_price) setCardPrice(data[0].card_price);
         if (data[0].saiba_mais_content) setSaibaMaisContent(data[0].saiba_mais_content);
